@@ -17,9 +17,9 @@ fn calculate_complete_overlaps(elves: &Vec<&str>) {
         let elf_1: Vec<i32> = ranges[0].split("-").map(|f| f.parse().unwrap()).collect();
         let elf_2: Vec<i32> = ranges[1].split("-").map(|f| f.parse().unwrap()).collect();
 
-        if elf_1[0] <= elf_2[0] && elf_1[1] >= elf_2[1] {
-            complete_overlaps += 1;
-        } else if elf_1[0] >= elf_2[0] && elf_1[1] <= elf_2[1] {
+        if (elf_1[0] <= elf_2[0] && elf_1[1] >= elf_2[1])
+            || (elf_1[0] >= elf_2[0] && elf_1[1] <= elf_2[1])
+        {
             complete_overlaps += 1;
         }
     }
@@ -36,9 +36,9 @@ fn calculate_partial_overlaps(elves: &Vec<&str>) {
         let elf_1: Vec<i32> = ranges[0].split("-").map(|f| f.parse().unwrap()).collect();
         let elf_2: Vec<i32> = ranges[1].split("-").map(|f| f.parse().unwrap()).collect();
 
-        if elf_1[0] <= elf_2[0] && elf_2[0] <= elf_1[1] {
-            partial_overlaps += 1;
-        } else if elf_2[0] <= elf_1[0] && elf_1[0] <= elf_2[1] {
+        if (elf_1[0] <= elf_2[0] && elf_2[0] <= elf_1[1])
+            || (elf_2[0] <= elf_1[0] && elf_1[0] <= elf_2[1])
+        {
             partial_overlaps += 1;
         }
     }
